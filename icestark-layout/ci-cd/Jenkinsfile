@@ -1,0 +1,79 @@
+// 需要在jenkins的Credentials设置中配置jenkins-harbor-creds、jenkins-k8s-config参数
+pipeline {
+    agent any
+    environment {
+        HARBOR_CREDS = credentials('jenkins-harbor-creds')
+        K8S_CONFIG = credentials('jenkins-k8s-config')
+        GIT_TAG = sh(returnStdout: true,script: 'git describe --tags --always').trim()
+    }
+    parameters {
+        string(name: 'HARBOR_HOST', defaultValue: 'bmsoft245:5000', description: 'harbor仓库地址')
+        string(name: 'HARBOR_PRO', defaultValue: 'data-center', description: 'harbor仓库项目')
+        string(name: 'DOCKER_IMAGE', defaultValue: 'data-bmskmiroplatform-front', description: 'docker镜像名')
+        string(name: 'APP_NAME', defaultValue: 'data-bmskmiroplatform-front', description: 'k8s中标签名')
+        string(name: 'K8S_NAMESPACE', defaultValue: 'dev', description: 'k8s的namespace名称')
+        string(name: 'TARGETPORT', defaultValue: '4446', description: '容器端口')
+        string(name: 'NODEPORT', defaultValue: '31507', description: '机器端口')
+        string(name: 'WORKDIR', defaultValue: './', description: '系统工作目录')
+        string(name: 'BUILDPATH', defaultValue: 'build', description: '编译后代码相对于系统工作目录的相对目录')
+        string(name: 'CIPATH', defaultValue: 'ci-cd', description: 'jenkinsfile和dockerfile所在系统工作目录的目录')
+        string(name: 'NGINXFILE', defaultValue: 'http_84.conf', description: 'nginx配置文件名')
+        string(name: 'PROJECTPATH', defaultValue: '/opt/project/front-end/build', description: '项目在nginx中所在目录,注意,最后一级目录必须是build和BUILDPATH一样')
+        string(name: 'REPLICAS', defaultValue: '1', description: '副本数量')
+        string(name: 'SSOURL', defaultValue: '10.194.186.245:31498', description: '单点登录地址')
+        string(name: 'DOMAIN', defaultValue: '', description: '当前项目的域名/访问地址')
+        string(name: 'DOMAINPATH', defaultValue: '/', description: '当前项目的path,根目录默认为空')
+        string(name: 'DEPLOYTYPE', defaultValue: 'nodeport', description: '部署方式:nodeport是需要用ip+port访问，clusterIp则是服务名+端口访问')
+    }
+    stages {
+        stage('Docker Build') {
+            when {
+                allOf {
+                    expression { env.GIT_TAG != null }
+                }
+            }
+            agent any
+            steps {
+                sh "ls"
+                sh "cd ${params.WORKDIR} && npm install --unsafe-perm=true --allow-root --sass_binary_site=https://registry.npmjs.org/node-sass && npm run build"
+                //sh "npm install  --registry=http://10.194.186.225:18081/repository/npm-group/ --unsafe-perm=true --allow-root"
+                //sh "ls"
+                //sh "npm run build"
+                sh "cp -r ${params.WORKDIR}/${params.BUILDPATH} ${params.WORKDIR}/${params.CIPATH}"
+                sh "ls ${params.WORKDIR}/${params.CIPATH}"
+                sh "sed -i 's#{PROJECTPATH}#${params.PROJECTPATH}#g;s#{TARGETPORT}#${params.TARGETPORT}#g;s#{SSOURL}#${params.SSOURL}#g;s#{DOMAINPATH}#${params.DOMAINPATH}#g;' ${params.WORKDIR}/${params.CIPATH}/${params.NGINXFILE}"
+                sh "cat ${params.WORKDIR}/${params.CIPATH}/${params.NGINXFILE}"
+                sh "docker login -u ${HARBOR_CREDS_USR} -p ${HARBOR_CREDS_PSW} ${params.HARBOR_HOST}"
+                sh "docker build --build-arg BUILD_PATH=${params.BUILDPATH} --build-arg FILE_PATH=${params.PROJECTPATH} --build-arg NGINXFILE=${params.NGINXFILE} -t ${params.HARBOR_HOST}/${params.HARBOR_PRO}/${params.DOCKER_IMAGE}:${GIT_TAG} ${params.WORKDIR}/${params.CIPATH}"
+                sh "docker push ${params.HARBOR_HOST}/${params.HARBOR_PRO}/${params.DOCKER_IMAGE}:${GIT_TAG}"
+                sh "docker rmi ${params.HARBOR_HOST}/${params.HARBOR_PRO}/${params.DOCKER_IMAGE}:${GIT_TAG}"
+            }
+
+        }
+        stage('Deploy') {
+            when {
+                allOf {
+                    expression { env.GIT_TAG != null }
+                }
+            }
+            agent {
+                docker {
+                    image 'lwolf/helm-kubectl-docker'
+                }
+            }
+            steps {
+                sh "mkdir -p ~/.kube"
+                //sh "ls"
+                sh "echo ${K8S_CONFIG} | base64 -d > ~/.kube/config"
+                sh "sed -e 's#{IMAGE_URL}#${params.HARBOR_HOST}/${params.HARBOR_PRO}/${params.DOCKER_IMAGE}:${GIT_TAG}#g;s#{IMAGE_TAG}#${GIT_TAG}#g;s#{DEPLOYNAME}#${params.APP_NAME}#g;s#{TARGETPORT}#${params.TARGETPORT}#g;s#{NODEPORT}#${params.NODEPORT}#g;s#{REPLICAS}#${params.REPLICAS}#g;s#{DOMAIN}#${params.DOMAIN}#g;s#{DOMAINPATH}#${params.DOMAINPATH}#g;' ${params.WORKDIR}/${params.CIPATH}/${params.DEPLOYTYPE}.tpl > ${params.DEPLOYTYPE}.yml"
+                sh "cat ${params.DEPLOYTYPE}.yml"
+                //sh "kubectl delete deploy ${params.APP_NAME}-deploy -n ${params.K8S_NAMESPACE}"
+                //sh "kubectl delete deploy ${params.APP_NAME}-svc -n ${params.K8S_NAMESPACE}"
+                sh "echo ${K8S_CONFIG} | base64 -d > ~/.kube/config"
+                sh "kubectl apply -f ${params.DEPLOYTYPE}.yml --namespace=${params.K8S_NAMESPACE}"
+            }
+
+        }
+
+    }
+}

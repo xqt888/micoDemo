@@ -1,0 +1,135 @@
+.nodeIcon,
+.addIcon {
+  color: #0E87F7;
+  margin-right: 2px;
+
+  &:before {
+    font-size: 18px !important;
+  }
+}
+
+.addIcon {
+  color: #46BC15;
+  margin-left: 10px;
+  display: none;
+}
+
+.nodeItem {
+  display: inline-block;
+
+  &:hover {
+    .addIcon {
+      display: inline-block;
+    }
+  }
+}
+
+.searchContainer {
+  &>div {
+    height: 100%;
+    padding-bottom: 20px;
+
+    :global {
+      .next-tree {
+        padding: 0 20px;
+      }
+    }
+  }
+
+  :global {
+    .next-search-simple {
+      width: 100%;
+      padding: 20px 20px 10px;
+    }
+  }
+}
+
+.emptyData {
+  display: inline-block;
+  height: auto !important;
+  text-align: center;
+  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  color: #A0A2AD;
+}
+
+.packageDialog,
+.metaModelDialog,
+.formContent {
+  :global {
+    .next-form-item {
+      width: 100%;
+    }
+    
+    .next-form-item .next-form-item-label {
+      width: 110px;
+    }
+
+    .next-dialog-body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .next-form-item-control {
+      display: inline-block;
+      width: calc(100% - 110px);
+    }
+
+    .next-step {
+      .next-step-item {
+
+        &:nth-child(1){
+          width: 65% !important;
+        }
+      }
+    }
+  }
+}
+
+.FristForm,
+.SecondForm {
+  position: relative;
+  width: 100%;
+}
+
+.formContent {
+  margin-top: 25px;
+  padding-bottom: 52px;
+
+  :global {
+    .next-select-single .next-select-values>em {
+      overflow: visible;
+    }
+
+    .next-select-single .next-select-values>em>.next-icon {
+      color: #333;
+
+      &:before {
+        font-size: 20px !important;
+      }
+    }
+  }
+}
+
+.btnContent {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 540px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 20px;
+  border-top: 1px solid #DCDEE3;
+}
+
+.cancelBtn {
+  margin-right: 20px;
+  margin-top: 5px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}

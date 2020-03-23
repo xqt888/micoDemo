@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  :global {
+    .next-form-item .next-form-item-label {
+      width: 120px;
+    }
+    .next-form-item .next-input {
+      // width: 350px;
+    }
+    .next-form-item-control {
+      display: inline-block;
+    }
+    .next-form-item {
+      display: block !important;
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "name": "bmsk-ice-pro",
+  "version": "0.1.0",
+  "description": "北明数科中台系统自定义模板，暂不支持效果预览功能。",
+  "dependencies": {
+    "@alifd/next": "^1.18.16",
+    "@alifd/shell": "^1.0.8",
+    "@alifd/theme-11239": "^0.5.0",
+    "@antv/data-set": "^0.9.5",
+    "@antv/g6": "^3.3.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
+    "@ice/stark-app": "^1.2.0",
+    "@ice/store": "^0.3.0",
+    "@icedesign/container": "^1.x",
+    "@icedesign/data-binder": "^1.x",
+    "@icedesign/dynamic-icon": "^0.1.8",
+    "@icedesign/ellipsis": "^1.x",
+    "@icedesign/form-binder": "^1.0.3",
+    "@icedesign/foundation-symbol": "^1.0.0",
+    "@icedesign/img": "^1.0.0",
+    "@icedesign/label": "^1.x",
+    "@icedesign/layout": "^1.x",
+    "@icedesign/theme": "^1.x",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-redux": "^7.1.5",
+    "antd": "^3.26.0",
+    "axios": "^0.17.1",
+    "axios-mock-adapter": "^1.17.0",
+    "babel-runtime": "^6.26.0",
+    "bizcharts": "^3.2.2",
+    "classnames": "^2.2.6",
+    "cookie": "^0.4.0",
+    "enquire-js": "^0.1.2",
+    "history": "^4.7.2",
+    "hoist-non-react-statics": "^2.5.5",
+    "intl": "^1.2.5",
+    "invariant": "^2.2.4",
+    "mockjs": "^1.1.0",
+    "moment": "^2.24.0",
+    "path-to-regexp": "^2.2.1",
+    "prop-types": "^15.5.8",
+    "rc-queue-anim": "^1.8.3",
+    "react": "^16.2.0",
+    "react-crons": "^1.7.2",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-dnd": "^10.0.2",
+    "react-dnd-html5-backend": "^10.0.2",
+    "react-dom": "^16.4.1",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.0.1",
+    "ts-import-plugin": "^1.6.1"
+  },
+  "devDependencies": {
+    "@ice/screenshot": "^0.1.5",
+    "@ice/spec": "^0.1.1",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "css-modules-typescript-loader": "^4.0.0",
+    "eslint": "^6.0.1",
+    "ice-plugin-fusion": "^0.1.4",
+    "ice-plugin-moment-locales": "^0.1.0",
+    "ice-scripts": "^2.1.12",
+    "stylelint": "^10.1.0"
+  },
+  "scripts": {
+    "start": "ice-scripts dev",
+    "build": "ice-scripts build",
+    "screenshot": "screenshot -l",
+    "prepublishOnly": "npm run build && npm run screenshot",
+    "lint": "npm run eslint && npm run stylelint",
+    "eslint": "eslint --cache --ext .js,.jsx ./",
+    "stylelint": "stylelint ./**/*.scss"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "iceworks": {
+    "type": "react",
+    "adapter": "adapter-react-v3"
+  },
+  "publishConfig": {
+    "registry": "http://10.194.186.225:18081/repository/npm-hosted/"
+  },
+  "files": [
+    "ci-cd/",
+    "mock/",
+    "src/",
+    "build/",
+    "public/",
+    "abc.json",
+    "debug.log",
+    "tsconfig.json",
+    "ice.config.js",
+    "screenshot.png",
+    "jsconfig.json"
+  ],
+  "buildConfig": {
+    "theme": "@alifd/theme-11239",
+    "entry": "./src/index.ts"
+  },
+  "scaffoldConfig": {
+    "name": "bmsk-ice-pro",
+    "title": "北明数科中台系统自定义模板",
+    "category": "数据中台"
+  }
+}

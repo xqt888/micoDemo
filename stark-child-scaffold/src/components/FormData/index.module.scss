@@ -1,0 +1,31 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 12px;
+}
+
+.left {
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
+  flex-wrap: wrap;
+  margin: 10px 10px 0 0;
+}
+
+.right {
+  position: relative;
+  top: -3px;
+  flex-shrink: 0;
+}
+
+
+
+:global {
+	.next-form-item-label {
+		width: auto;
+	}
+	.next-form.next-inline .next-form-item:not(:last-child) {
+		margin-right: 30px;
+	}
+}
