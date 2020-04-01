@@ -85,15 +85,15 @@ const router = () => {
               key={id}
               {...others}
               component={props => {
-                let token = sessionStorage.getItem("token");
-                let params = getHashParam(window.location.href, "ticket");
-                if (!token && !params) {
-                  handleLink();
-                  return <div></div>;
-                } else if (params) {
-                  getCas();
-                  return <div></div>;
-                }
+                // let token = sessionStorage.getItem("token");
+                // let params = getHashParam(window.location.href, "ticket");
+                // if (!token && !params) {
+                //   handleLink();
+                //   return <div></div>;
+                // } else if (params) {
+                //   getCas();
+                //   return <div></div>;
+                // }
                 return children ? (
                   <RouteComponent key={id} {...props}>
                     <Switch>

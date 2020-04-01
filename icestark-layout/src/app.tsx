@@ -43,7 +43,7 @@ const appConfig = {
         path: '/converge',
         title: 'converge',
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
-        entry: 'http://10.194.186.247:88/index.html',
+        entry: 'http://localhost:4444/',
       },{
         path: '/dataGovernance',
         title: 'dataGovernance',
