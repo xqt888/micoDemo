@@ -3,10 +3,10 @@ import { createApp } from 'ice'
 import { ConfigProvider } from '@alifd/next';
 import PageLoading from '@/components/PageLoading';
 import FrameworkLayout from '@/layouts/FrameworkLayout';
-import mock from '../mock/index.js'
+// import mock from '../mock/index.js'
 //挂载 Mock
 
- mock.init()
+//  mock.init()
 
 
 const appConfig = {
