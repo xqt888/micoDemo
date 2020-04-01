@@ -1,0 +1,28 @@
+.list {
+	width: 500px;
+	padding: 36px 0 0 0;
+}
+.rowList {
+	margin-bottom: 35px;
+}
+.icon {
+	color: #333;
+	&:before {
+		width: auto !important;
+		font-size: 36px !important;
+	}
+}
+.text {
+	font-size: 14px;
+	color: #666;
+	margin-top: 5px;
+}
+.colItem {
+	cursor: pointer;
+	text-align: center;
+	&:hover {
+		.icon, .text {
+			color: #0E87F7;
+		}
+	}
+}

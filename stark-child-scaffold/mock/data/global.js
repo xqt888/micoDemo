@@ -3,199 +3,77 @@
  * @Author: xuqiuting
  * @Date: 2019-11-12 13:55:35
  * @LastEditors: xuqiuting
- * @LastEditTime: 2020-03-06 17:25:16
+ * @LastEditTime: 2020-04-01 19:07:40
  */
 import Mock from "mockjs";
 
 export default {
   init() {
- // 登录验证/cas/client/validateLogin
-//  Mock.mock(/(\/cas\/client\/validateLogin)/, "get", {
-//   code: 200,
-//   msg: "@cparagraph",
-//   result:{
-//     userInfo:{
-//       realname:"管理员"
-//     },
-//     departs:{}
-//   }
-//  })
+    // 单点地址配置
+    Mock.mock(/(\/configjson)/, "get", function (options) {
+      const reponseMsg = {
+        code: 200,
+        data: {
+          casHref: "http://10.194.188.228:8081",
+          websocketUrl: "ws://10.195.244.176:18880/webSocket/engine/indicate/",
+        },
+      };
+      return reponseMsg;
+    });
 
-    // 菜单接口//sys/permission/getPermissionBySystemId
-    Mock.mock(/(\/sys\/permission\/getPermissionBySystemId)/, "get", {
+    // 用户接口
+    Mock.mock("/user", "post", function (options) {
+      const reponseMsg = {
+        code: 200,
+        msg: "成功",
+        data: {},
+      };
+      const requestParama = JSON.parse(options.body);
+      if (
+        requestParama.userName === "admin" &&
+        requestParama.password === "admin"
+      ) {
+        reponseMsg.data = {
+          name: "淘小宝",
+          department: "技术部",
+          avatar: "https://img.alicdn.com/tfs/TB1L6tBXQyWBuNjy0FpXXassXXa-80-80.png",
+          userid: 10001,
+        };
+      } else {
+        reponseMsg.data = {};
+      }
+      return reponseMsg;
+    });
+
+    // 菜单接口/jeecg-boot/sys/permission/getPermissionBySystemId
+    Mock.mock(/(\/convergeSys\/permission\/getPermissionBySystemId)/, "get", {
       code: 200,
       msg: "@cparagraph",
       // 属性 list 的值是一个数组，其中含有 1 到 5 个元素
-        result:{
-          children: [
-            {
-              title: "数据治理",
-              path: "/dataGovernance",
-              external: false,
-              newWindow: false,
-              id: "Menu_1",
+      result: {
+        children: [{
+          title: "汇聚平台",
+          path: "/converge",
+          external: false,
+          newWindow: false,
+          id: "Menu_1",
+          children: [{
+              title: "配置管理",
+              path: "/converge/configuration",
+              icon: "peizhiguanlixuanzhong",
+              id: "Menu_1_1",
               children: [
                 {
-                  title: "元模型管理",
-                  path: "/dataGovernance/original",
+                  title: "数据源管理",
+                  path: "/converge/configuration/source",
                   icon: "ul-list",
-                  id: "Menu_1_1",
-                }, {
-                  title: "标准化管理",
-                  path: "/dataGovernance/standardization",
-                  icon: "repair",
-                  id: "Menu_1_2",
-                  children:[
-                    {
-                      title: "标准分类",
-                      path: "/dataGovernance/standardization/classify",
-                      id: "Menu_1_2_1",
-                    },
-                    {
-                      title: "数据标准",
-                      path: "/dataGovernance/standardization/data",
-                      id: "Menu_1_2_2",
-                    },{
-                      title: "命名标准",
-                      path: "/dataGovernance/standardization/name",
-                      id: "Menu_1_2_3",
-                    },{
-                      title: "字段标准",
-                      path: "/dataGovernance/standardization/field",
-                      id: "Menu_1_2_4",
-                    },
-                    // {
-                    //   title: "编码标准",
-                    //   path: "/dataGovernance/standardization/code",
-                    //   id: "Menu_code",
-                    // },
-                  ]
-                }, {
-                  title: "元数据",
-                  path: "/dataGovernance/sourceData",
-                  icon: "cascades",
-                  id: "Menu_1_3",
-                  children:[
-                    {
-                      title: "数据编目",
-                      path: "/dataGovernance/sourceData/catalog",
-                      id: "Menu_1_3_1",
-                    },
-                    {
-                      title: "元数据采集",
-                      path: "/dataGovernance/sourceData/collect",
-                      id: "Menu_1_3_2",
-                    },{
-                      title: "数据地图",
-                      path: "/dataGovernance/sourceData/map",
-                      id: "Menu_1_3_3",
-                    }
-                  ]
+                  id: "Menu_1_1_1",
                 },
-                {
-                  title: "模型设计",
-                  path: "/dataGovernance/modleDesign",
-                  icon: "home2",
-                  id: "Menu_1_4",
-                  children:[
-                    {
-                      title: "数据模型",
-                      path: "/dataGovernance/modleDesign/dataModle",
-                      id: "Menu_1_4_1"
-                    },
-                    {
-                      title: "标签模型",
-                      path: "/dataGovernance/modleDesign/labelModle",
-                      id: "Menu_1_4_2"
-                    },
-                    {
-                      title: "预警模型",
-                      path: "/dataGovernance/modleDesign/warningModle",
-                      id: "Menu_1_4_3"
-                    },
-                    {
-                      title: "指标模型",
-                      path: "/dataGovernance/modleDesign/indexModle",
-                      id: "Menu_1_4_4"
-                    }
-                  ]
-                },
-                {
-                  title: "数据质量",
-                  path: "/dataGovernance/dataQuality",
-                  icon: "home2",
-                  id: "Menu_1_5",
-                  children: [
-                    {
-                      title: "通用规则配置",
-                      path: "/dataGovernance/dataQuality/generalRules",
-                      id: "Menu_1_5_1"
-                    },
-                    {
-                      title: "质量检查作业",
-                      path: "/dataGovernance/dataQuality/quaInspect",
-                      id: "Menu_1_5_2",
-                      children: [
-                        {
-                          title: "离线数据质量检查",
-                          path: "/dataGovernance/dataQuality/quaInspect/offlineData",
-                          id: "Menu_1_5_2_1"
-                        },
-                        {
-                          title: "实时数据质量检查",
-                          path: "/dataGovernance/dataQuality/quaInspect/realTimeData",
-                          id: "Menu_1_5_2_2"
-                        },
-                      ]
-                    },
-                    {
-                      title: "质量检查报告",
-                      path: "/dataGovernance/dataQuality/insReport",
-                      id: "Menu_1_5_3"
-                    },
-                  ]
-                },{
-                  title: "数据安全",
-                  path: "/dataGovernance/security",
-                  icon: "home2",
-                  id: "Menu_1_6",
-                  children: [
-                    {
-                      title: "脱敏算法管理",
-                      path: "/dataGovernance/security/desensitizeAlg",
-                      id: "Menu_1_6_1"
-                    },
-                    {
-                      title: "脱敏规则应用",
-                      path: "/dataGovernance/security/desensitizeRule",
-                      id: "Menu_1_6_2"
-                    },
-                    {
-                      title: "数据权限管理",
-                      path: "/dataGovernance/security/authority",
-                      id: "Menu_1_6_3",
-                      children:[
-                        {
-                          title: "数据源权限",
-                          path: "/dataGovernance/security/authority/data",
-                          id: "Menu_1_6_3_1",
-                        }, {
-                          title: "数据表权限",
-                          path: "/dataGovernance/security/authority/table",
-                          id: "Menu_1_6_3_2",
-                        },{
-                          title: "我的权限",
-                          path: "/dataGovernance/security/authority/my",
-                          id: "Menu_1_6_3_3",
-                        },
-                      ]
-                    }
-                  ]
-                }
               ],
-            },
+            }, 
           ],
-        },
+        }],
+      },
     });
   },
 };

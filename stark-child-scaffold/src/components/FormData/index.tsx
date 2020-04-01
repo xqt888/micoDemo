@@ -2,10 +2,10 @@
  * @Description: form表单
  * @Author: xuqiuting
  * @Date: 2019-11-12 10:46:09
- * @LastEditors: Wenmin He
- * @LastEditTime : 2020-01-15 14:27:45
+ * @LastEditors: xuqiuting
+ * @LastEditTime: 2019-12-05 10:45:49
  */
-import React, { useState, useEffect } from "react";
+import React ,{ useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   Form,
@@ -25,17 +25,9 @@ const TextArea = Input.TextArea;
 const Option = Select.Option;
 const { RangePicker, MonthPicker, YearPicker } = DatePicker;
 const RadioGroup = Radio.Group;
-const InputGroup = Input.Group;
 
 export default function FormData(props) {
-  let myfield = Field.useField({
-    onChange: (name, value) => {
-      let values = myfield.getValues();
-      props.onChange(values)
-    }
-  });
-  let init = myfield.init;
-
+  let myfield = Field.useField();
   const [dataSource, setDataSource] = useState([]);
 
   useEffect(() => {
@@ -44,18 +36,9 @@ export default function FormData(props) {
 
   // 查询
   const handleSearch = () => {
-    myfield.validate((errors, values) => {
+    myfield.validate(null, (errors, values) => {
       if (!errors) {
-        // 如果存在复合搜索框的时候，将字段名和值拼在一起
-        if (("fieldName" in values) && ("keyword") in values) {
-          const fieldName = values.fieldName;
-          const keyword = values.keyword;
-          values[fieldName] = keyword;
-          delete values.fieldName;
-          delete values.keyword;
-        }
-        
-        // console.log(values, "values");
+        console.log(values, "values");
         props.handleSubmit(values);
       }
     });
@@ -69,7 +52,7 @@ export default function FormData(props) {
   // 生成formItem
   const generateFormFields = () => {
     let components = [];
-
+   
     dataSource.map(item => {
       let Component = <label></label>;
       const { type, label, ...rest } = item;
@@ -153,54 +136,26 @@ export default function FormData(props) {
             <FormItem label={label} key={label} labelAlign="left">
               <RadioGroup shape={item.shape}>
                 {
-                  item.radioList &&
-                  item.radioList.map(({ label, value }, index) => (
-                    <Radio key={value + "_" + index} value={value}>
-                      {label}
-                    </Radio>
-                  ))
+                  item.radioList && 
+                    item.radioList.map(({ label, value }, index) => (
+                      <Radio key={value + "_" + index} value={value}>
+                        {label}
+                      </Radio>
+                    ))
                 }
               </RadioGroup>
             </FormItem>
           );
-          break;
-        case "InputGroup":
-          const seleItem = item.select;
-          const inputItem = item.input;
-          const { seleRest } = seleItem;
-          const { inputRest } = inputItem;
-
-          const select = (
-            <Select 
-              {...init("fieldName", { initValue: seleItem.defaultValue })}
-              {...seleRest}
-            >
-              {seleItem.options &&
-                seleItem.options.map(({ label, value }, index) => (
-                  <Option key={value + "_" + index} value={value}>
-                    {label}
-                  </Option>
-                ))}
-              }
-              </Select>
-          );
-          Component = (
-            <FormItem>
-              <InputGroup addonBefore={select}>
-                <Input placeholder={inputItem.placeholder} {...inputRest} {...init("keyword", { initValue: "" })} />
-              </InputGroup>
-            </FormItem>
-          )
       }
       components.push(Component);
     });
     return components;
   };
-
-
+  
+  
   return (
-    <div style={{ display: "inline-block" }}>
-      <Form inline field={myfield} style={{ display: "inline-block" }}>
+    <div style={{display: "inline-block"}}>
+      <Form inline field={myfield} style={{display: "inline-block"}}>
         <div className={styles.wrapper}>
           <div className={styles.left}>{generateFormFields()}</div>
           <div className={styles.right}>
@@ -227,7 +182,6 @@ FormData.propTypes = {
 
 FormData.defaultProps = {
   dataSource: [],
-  handleSubmit: () => { },
-  handleReset: () => { },
-  onChange: () => { }
+  handleSubmit: () => {},
+  handleReset: () => {}
 };

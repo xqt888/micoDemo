@@ -3,27 +3,27 @@
  * @Author: xuqiuting
  * @Date: 2019-11-08 16:41:06
  * @LastEditors: xuqiuting
- * @LastEditTime: 2019-11-12 13:57:47
+ * @LastEditTime: 2020-03-27 09:50:21
  */
 // 初始化值为一个对象时
   
-const menuConfig = sessionStorage.getItem("menuConfig")
-  ? JSON.parse(sessionStorage.getItem("menuConfig"))
+const collectMenu = sessionStorage.getItem("collectMenu")
+  ? JSON.parse(sessionStorage.getItem("collectMenu"))
   : [];
 
-const menuType = sessionStorage.getItem("menuType")
-  ? sessionStorage.getItem("menuType")
+const collectMenuType = sessionStorage.getItem("collectMenuType")
+  ? sessionStorage.getItem("collectMenuType")
   : "";
 
 export default {
-  menuType: menuType, // 选中的第一级菜单
-  menuConfig: menuConfig, // 所有菜单
+  collectMenuType: collectMenuType, // 选中的第一级菜单
+  collectMenu: collectMenu, // 所有菜单
   // 切换菜单的按钮
   toggleMenu(type) {
-    this.menuType = type;
+    this.collectMenuType = type;
   },
   // 获取菜单
-  setMenu (menuConfig) {
-    this.menuConfig = menuConfig || [];
+  setMenu (collectMenu) {
+    this.collectMenu = collectMenu || [];
   }
 };

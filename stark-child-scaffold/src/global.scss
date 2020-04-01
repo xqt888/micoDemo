@@ -1,87 +1,101 @@
 // 引入默认全局样式
 @import '@alifd/next/reset.scss';
 
-.mr10{
-  margin-right:10px;
+.mr10 {
+  margin-right: 10px;
 }
-.ml10{
+
+.ml10 {
   margin-left: 10px;
 }
-.mb10{
+
+.mb10 {
   margin-bottom: 10px;
 }
-.mt10{
+
+.mt10 {
   margin-top: 10px;
 }
-.mr20{
-  margin-right:20px;
+
+.mr20 {
+  margin-right: 20px;
 }
-.ml20{
+
+.ml20 {
   margin-left: 20px;
 }
-.mb20{
+
+.mb20 {
   margin-bottom: 20px;
 }
-.mt20{
+
+.mt20 {
   margin-top: 20px;
 }
-.pointer{
+
+.pointer {
   cursor: pointer;
 }
+
 body {
   -webkit-font-smoothing: antialiased;
 }
-
-.ice-layout-header-normal{
-  background-color: #22242A !important;
+.white{
+  background: #fff;
 }
- .ice-layout-aside-normal {
-  background-color: #353841 !important;
+.pramary {
+  color: #1eb2e3 !important;
 }
-.ice-layout-footer-normal {
-  background-color: #eee !important;
+.pramary:hover {
+  color: #1EB2E3 !important;
 }
-.next-overlay-wrapper {
-  .next-nav.next-normal {
-    border: none;
-  }
-  .next-nav.next-normal .next-nav-item.next-menu-item {
-    color: #fff;
-    background-color: #2D323F;
-  }
-  .next-nav.next-normal .next-nav-item.next-menu-item.next-selected {
-    color: #fff;
-    background-color: #444;
-  }
-  .next-nav.next-normal .next-nav-item.next-menu-item.next-focused,
-  .next-nav.next-normal .next-nav-item.next-menu-item:hover {
-    color: #fff;
-    background-color: #444;
-  }
-  
+.pramaryBgd {
+  background: #1EB2E3 !important;
 }
-.container-block{
-    margin: 0 ;
-    padding: 0 ;
-    background-color: transparent ;
-    display: inline;
+.delete {
+  color: rgb(255, 48, 0);
+}
+.delete:hover {
+  color: rgb(255, 48, 0);
+}
+.warning{
+  color:#F6A230 !important;
+}
+.warning:hover {
+  color: #F6A230 !important;
+}
+.puple{
+  color: #578BDF !important;
+}
+.puple:hover{
+  color: #578BDF !important;
 }
 
-.layout-aside{
-  box-shadow:0px 2px 20px 0px rgba(0, 0, 0, 0.4);
+.container-block {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  display: inline;
+}
+
+.layout-aside {
+  box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.4);
 }
 
 .next-dialog {
   border-radius: 5px;
+
   .next-dialog-header {
     padding: 16px 20px 16px 20px;
     border-bottom: 1px solid #DCDEE3;
   }
+
   .next-dialog-footer {
     padding: 15px 20px 15px 20px;
     border-top: 1px solid #DCDEE3;
   }
 }
+
 .layout-main {
   min-height: auto !important;
 }
@@ -89,6 +103,7 @@ body {
 .ice-layout-main {
   padding: 14px 20px 20px !important;
 }
+
 .layout-main {
   // padding: 6px 0 20px;
 }
@@ -96,68 +111,98 @@ body {
 .ice-layout-section.ice-layout-scrollable {
   overflow: visible !important;
 }
+
+.contentWrapTab{
+  width: 100%;
+  height: 100%;
+  .wraper{
+    width: 100%;
+    padding-top:10px;
+    padding-left:4px;
+    :global{
+      .next-tabs-content{
+        background: #fff;
+        padding:20px;
+      }
+    }
+  }
+}
+
 .contentWrap {
   width: 100%;
   height: 100%;
+  background: #fff;
+
   .headerTitle {
     width: 100%;
-    height:60px;
-    box-shadow:0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+    height: 60px;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
     margin-bottom: 17px;
-    font-size:18px;
+    font-size: 18px;
     line-height: 60px;
-    color:rgba(51,51,51,1);
+    color: rgba(51, 51, 51, 1);
     padding-left: 27px;
   }
+
   .wraper {
     width: 100%;
-    box-shadow:0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
     padding: 20px;
     position: relative;
   }
+
   .searchWrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   .operation {
     margin: 10px 0 20px;
   }
 }
-html, body, #ice-container, .ice-layout {
+
+html,
+body,
+#ice-container,
+.ice-layout {
   height: 100%;
 }
+
 // 省略号
 .ellipsis {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 1;
-	-webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 /* animation 1 */
 .load1 .loader,
 .load1 .loader:before,
 .load1 .loader:after {
-  background: #5584FF;
-  color: #5584FF;
+  background: #3CC5B1;
+  color: #3CC5B1;
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
   height: 4em;
 }
+
 .load1 .loader:before,
 .load1 .loader:after {
   position: absolute;
   top: 0;
   content: '';
 }
+
 .load1 .loader:before {
   left: -1.5em;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
+
 .load1 .loader {
   text-indent: -9999em;
   margin: 0 auto !important;
@@ -166,55 +211,80 @@ html, body, #ice-container, .ice-layout {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
+
 .load1 .loader:after {
   left: 1.5em;
 }
+
 @-webkit-keyframes load1 {
+
   0%,
   80%,
   100% {
-    box-shadow: 0 0 ;
+    box-shadow: 0 0;
     height: 4em;
   }
+
   40% {
-    box-shadow: 0 -2em ;
-    height: 5em;
-  }
-}
-@keyframes load1 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 0 ;
-    height: 4em;
-  }
-  40% {
-    box-shadow: 0 -2em ;
+    box-shadow: 0 -2em;
     height: 5em;
   }
 }
 
-  .layout-main{		
-    scrollbar-arrow-color: transparent; /**//*三角箭头的颜色*/ 		
-    scrollbar-face-color: #ddd; /**//*立体滚动条的颜色*/ 		
-    scrollbar-3dlight-color: transparent; /**//*立体滚动条亮边的颜色*/ 		
-    scrollbar-highlight-color: transparent; /**//*滚动条空白部分的颜色*/ 		
-    scrollbar-shadow-color: transparent; /**//*立体滚动条阴影的颜色*/ 		
-    scrollbar-darkshadow-color: transparent; /**//*立体滚动条强阴影的颜色*/ 	
-    scrollbar-track-color: transparent; /**//*立体滚动条背景颜色*/ 	
-    scrollbar-base-color:transparent; /**//*滚动条的基本颜色*/ 	
+@keyframes load1 {
+
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+
+.layout-main {
+  scrollbar-arrow-color: transparent;
+  /**/
+  /*三角箭头的颜色*/
+  scrollbar-face-color: #ddd;
+  /**/
+  /*立体滚动条的颜色*/
+  scrollbar-3dlight-color: transparent;
+  /**/
+  /*立体滚动条亮边的颜色*/
+  scrollbar-highlight-color: transparent;
+  /**/
+  /*滚动条空白部分的颜色*/
+  scrollbar-shadow-color: transparent;
+  /**/
+  /*立体滚动条阴影的颜色*/
+  scrollbar-darkshadow-color: transparent;
+  /**/
+  /*立体滚动条强阴影的颜色*/
+  scrollbar-track-color: transparent;
+  /**/
+  /*立体滚动条背景颜色*/
+  scrollbar-base-color: transparent;
+  /**/
+  /*滚动条的基本颜色*/
 }
 
 .dialogWraper {
   position: relative;
   width: 760px;
   height: 500px;
+
   :global {
     .next-loading-inline {
       display: block;
     }
   }
 }
+
 .dialogFooter {
   position: absolute;
   width: 100%;
@@ -222,8 +292,10 @@ html, body, #ice-container, .ice-layout {
   display: flex;
   justify-content: center;
 }
+
 .dialogForm {
   margin-top: 30px;
+
   :global {
     .next-loading-inline {
       display: block;
@@ -231,20 +303,71 @@ html, body, #ice-container, .ice-layout {
   }
 }
 
-.layout-main{
+.layout-main {
   min-height: 90vh;
   height: 100%;
 }
+
 .ice-layout-section.ice-layout-scrollable {
   height: calc(100% - 78px);
 }
+
 .ice-layout-section-inner {
   height: 100%;
 }
-.loadingWrapper{
-  :global{
-    .next-loading-inline{
+
+.loadingWrapper {
+  :global {
+    .next-loading-inline {
       display: block;
     }
+  }
+}
+
+.next-shell-dark .next-shell-header .dock-trigger,
+.next-shell-dark .next-shell-header .nav-trigger {
+  display: none;
+}
+
+.next-nav.next-normal .next-menu-sub-menu .next-menu-item {
+  padding-left: 60px !important;
+}
+
+.next-nav.next-normal {
+  border: none;
+}
+
+.ice-icon-stable {
+  margin-right: 8px;
+}
+
+.nodata {
+  background: url("../public/imgs/emptyPic.png") no-repeat center center;
+  width: 200px;
+  height: 150px;
+  margin: 60px auto;
+}
+
+.next-shell {
+  height: 100%;
+}
+.next-icon{
+  margin-right: 8px;
+}
+.next-shell-content {
+  height: calc(100% - 48px - 20px - 20px);
+  overflow: hidden;
+}
+
+.next-shell-content-inner {
+  height: 100%;
+}
+.next-shell-dark .next-shell-main .next-shell-content{
+  padding-top:0 !important;
+}
+
+.next-nav.next-ver .next-menu-sub-menu .next-menu-item-inner{
+  .ice-icon-stable{
+    display: none;
   }
 }

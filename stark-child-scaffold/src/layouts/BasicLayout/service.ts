@@ -2,13 +2,13 @@
  * @Description: 基本结构服务配置文件
  * @Author: xuqiuting
  * @Date: 2019-11-12 14:00:38
- * @LastEditors  : xuqiuting
- * @LastEditTime : 2020-01-13 09:46:12
+ * @LastEditors: xuqiuting
+ * @LastEditTime: 2020-03-30 10:42:32
  */
 // 获取菜单信息
 export const getMenuApi = (params)=>{
     return {
-        url: `/sys/permission/getPermissionBySystemId`,
+        url: `/convergeSys/permission/getPermissionBySystemId`,
         method: "GET",
         params:params
     }
@@ -26,7 +26,7 @@ export const getUserApi = (params)=>{
 // 退出登录
 export const getCasOut = (params) => {
     return {
-      url: `/sys/token/delete`,
+      url: `/convergeSys/token/delete`,
       method: "GET",
       params: params
     };

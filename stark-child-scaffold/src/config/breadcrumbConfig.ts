@@ -3,14 +3,14 @@
  * @Author: xuqiuting
  * @Date: 2019-12-11 10:12:15
  * @LastEditors: xuqiuting
- * @LastEditTime: 2020-03-23 14:28:00
+ * @LastEditTime: 2020-04-01 18:54:04
  */
 const breadcrumbConfig = [
   {
-    name: "元模型管理",
+    name: "数据源管理",
     id: "Menu_01",
-    path: "/dataGovernance/original"
-  },
+    path: '/converge/configuration/source',
+  }, 
 ];
 
 export { breadcrumbConfig };

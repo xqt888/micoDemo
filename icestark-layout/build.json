@@ -1,0 +1,53 @@
+{
+  "plugins": [
+    "build-plugin-icestark",
+    [
+      "build-plugin-fusion",
+      {
+        "themePackage": "@alifd/theme-design-pro",
+        "themeConfig": {
+          "nextPrefix": "next-icestark-"
+        }
+      }
+    ],
+    [
+      "build-plugin-moment-locales",
+      {
+        "locales": [
+          "zh-cn"
+        ]
+      }
+    ]
+  ],
+  "alias": {
+    "@": "path.resolve(__dirname, './src/')",
+    "public":"path.resolve(__dirname, './public/')"
+  },
+  "proxy": {
+    "/cas": {
+      "enable": true,
+      "pathRewrite": { "^/cas": "/data-manage/cas" },
+      "target": "http://10.194.188.228:4002"
+    },
+    "/sys": {
+      "enable": true,
+      "pathRewrite": { "^/sys": "/data-manage/sys "},
+      "target": "http://10.194.188.228:4002"
+    },
+    "/propertyApi": {
+      "enable": true,
+      "pathRewrite": {"^/propertyApi": ""},
+         "target": "http://10.194.188.228:15550"
+    },
+    "/convergeApi": {
+      "enable": true,
+      "pathRewrite": { "^/convergeApi": "/data-collect" },
+      "target": "http://10.194.188.228:4002"
+    },
+    "/api": {
+      "enable": true,
+      "pathRewrite": {"^/api": ""},
+      "target": "http://10.194.188.228:15550"
+    }
+  }
+}

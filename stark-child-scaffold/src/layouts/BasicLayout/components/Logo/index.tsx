@@ -33,7 +33,7 @@ export default function Logo() {
       >
         {menu}
       </Dropdown>
-       <label className={styles.logo}>数据中台.数据资产</label>
+       <label className={styles.logo}>数据中台.数据汇聚</label>
     </div>
   );
 }

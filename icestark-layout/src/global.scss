@@ -1,25 +1,6 @@
-html,body{
-    height: 100%;
-}
-body{
-    margin:0;
-}
-#icestark-container{
-  height: 100%;
-}
-.next-icestark-shell-dark .next-icestark-shell-main .next-icestark-shell-content{
-  padding: 0 !important;
-  height: 100%;
-}
-.next-icestark-shell-dark .next-icestark-shell-header{
-  background: #22242a !important;
-}
-.next-icestark-nav.next-icestark-primary .next-icestark-nav-item.next-icestark-menu-item{
-  background-color: #22242a !important;
-}
-.next-icestark-nav.next-icestark-primary .next-icestark-nav-item.next-icestark-menu-item:before{
-  background-color:transparent !important;
-}
-.next-icestark-nav.next-icestark-hoz .next-icestark-selected.next-icestark-nav-item:before{
-  height:0;
+// 引入默认全局样式
+@import '@alifd/next/reset.scss';
+
+.ice-stark-loading {
+  display: none;
 }

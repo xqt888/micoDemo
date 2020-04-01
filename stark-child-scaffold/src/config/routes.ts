@@ -3,26 +3,33 @@
  * @Author: xuqiuting
  * @Date: 2019-11-05 14:36:49
  * @LastEditors: xuqiuting
- * @LastEditTime: 2020-03-23 14:27:29
+ * @LastEditTime: 2020-04-01 19:21:01
  */
 // 基础布局
-import BasicLayout from '@/layouts/BasicLayout';
+import BasicLayout from "@/layouts/BasicLayout";
 // 页面路径找不着
-import NotFound from '@/components/NotFound';
-// 元模型管理
-import Original from '@/pages/Original';
+import NotFound from "@/components/NotFound";
+// 数据源管理
+import SourceManagement from "@/pages/SourceManagement";
 
 const routerConfig = [
   {
-    path: '/',
+    path: "/",
     component: BasicLayout,
     children: [
-      { path: '/', redirect: '/dataGovernance', exact: true },
-      { path: '/dataGovernance', redirect: '/dataGovernance/original', exact: true },
-      { path: '/dataGovernance/original', component: Original },
-      { component: NotFound },
-    ],
-  },
+      {
+        path: "/converge/configuration/source",
+        component: SourceManagement,
+        exact: true
+      },
+      {
+        path: "/",
+        redirect: "/converge/configuration/source",
+        exact: true
+      },
+      { component: NotFound }
+    ]
+  }
 ];
 
 export default routerConfig;

@@ -1,5 +1,4 @@
 import ReactDOM from 'react-dom';
-import { isInIcestark, getMountNode, registerAppEnter, registerAppLeave } from '@ice/stark-app';
 import './global.scss';
 import router from './router';
 //挂载 Mock
@@ -9,17 +8,10 @@ import mock from '../mock/index.js'
   mock.init()
 // }
 
-// if (isInIcestark()) {
-//   const mountNode = getMountNode();
+const ICE_CONTAINER = document.getElementById('ice-container');
 
-//   registerAppEnter(() => {
-//     ReactDOM.render(router(), mountNode);
-//   });
+if (!ICE_CONTAINER) {
+  throw new Error('当前页面不存在 <div id="ice-container"></div> 节点.');
+}
 
-//   // make sure the unmount event is triggered
-//   registerAppLeave(() => {
-//     ReactDOM.unmountComponentAtNode(mountNode);
-//   });
-// } else {
-  ReactDOM.render(router(), document.getElementById('ice-container'));
-// }
+ReactDOM.render(router(), ICE_CONTAINER);

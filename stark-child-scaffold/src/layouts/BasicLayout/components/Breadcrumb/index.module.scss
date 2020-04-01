@@ -1,23 +1,12 @@
 .wraper{
-    display: flex;
-    justify-content: space-between;
-    height: 40px;
-    line-height: 40px;
-    margin-bottom: 18px;
-    padding:0 20px;
-    box-shadow:0px 0px 6px 0px rgba(0, 0, 0, 0.1);
     :global{
         .next-breadcrumb .next-breadcrumb-text {
-            height: 40px;
-            min-width: 16px;
-            font-size: 14px;
-            line-height: 40px;
+            line-height: 48px;
+            height:48px;
         }
         .next-breadcrumb .next-breadcrumb-separator {
-            height: 40px;
-            margin: 0 8px;
-            font-size: 10px;
-            line-height: 40px;
+            line-height: 48px;
+            height:48px;
         }
     }
 }

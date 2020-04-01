@@ -3,7 +3,7 @@
  * @Author: xuqiuting
  * @Date: 2019-12-11 09:47:26
  * @LastEditors: xuqiuting
- * @LastEditTime: 2020-03-07 17:28:50
+ * @LastEditTime: 2020-03-25 09:48:26
  */
 import React, { useState, useEffect } from "react";
 import { Breadcrumb } from "@alifd/next";
@@ -86,8 +86,7 @@ const BreadcrumbComponent = withRouter(props => {
           }
         })}
       </Breadcrumb>
-      <div></div>
-    </div>
+     </div>
   );
 });
 

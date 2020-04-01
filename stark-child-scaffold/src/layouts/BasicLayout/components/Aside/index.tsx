@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import FoundationSymbol from "@icedesign/foundation-symbol";
 import { Link, withRouter } from "react-router-dom";
-import { Nav } from "@alifd/next";
+import { Nav,Icon } from "@alifd/next";
 import stores from "@/stores/index";
-import styles from "./index.module.scss";
 
 const SubNav = Nav.SubNav;
 const NavItem = Nav.Item;
@@ -25,7 +24,8 @@ function getSubMenuOrItem(item, index) {
           key={item.id}
           icon={
             item.icon ? (
-              <FoundationSymbol type={item.icon} size="small" />
+              <Icon type={item.icon} size="small"/>
+              // <FoundationSymbol type={item.icon} size="small" />
             ) : null
           }
           label={<span className="ice-menu-collapse-hide">{item.title}</span>}
@@ -41,7 +41,9 @@ function getSubMenuOrItem(item, index) {
   const navItem = (
     <NavItem key={item.id}>
       <Link to={item.path}>
-        <FoundationSymbol type={item.icon} size="small" /> {item.title}
+      <Icon type={item.icon} size="small"/>
+        {/* <FoundationSymbol type={item.icon} size="small" />  */}
+        {item.title}
       </Link>
     </NavItem>
   );
@@ -64,8 +66,8 @@ function getNavMenuItems(menusData) {
 }
 
 const Aside = withRouter(props => {
-  const menuObject: InitObject = stores.useStore("menuConfig");
-  const { menuType, menuConfig } = menuObject;
+  const menuObject: InitObject = stores.useStore("collectMenu");
+  const { collectMenuType, collectMenu } = menuObject;
   const [menuData, setMenu] = useState([]);
   const { location } = props;
   const { pathname } = location;
@@ -119,11 +121,11 @@ const Aside = withRouter(props => {
   // 获取菜单
   useEffect(() => {
     let aside = [];
-    if (menuConfig && menuConfig.length > 0 && menuType) {
-      aside = menuConfig.filter(item => item.id == menuType)[0].children || [];
+    if (collectMenu && collectMenu.length > 0 && collectMenuType) {
+      aside = collectMenu.filter(item => item.id == collectMenuType)[0].children || [];
     }
     setMenu(aside);
-  }, [menuType, menuConfig]);
+  }, [collectMenuType, collectMenu]);
 
   useEffect(() => {
     handdleSelect()
@@ -151,13 +153,12 @@ const Aside = withRouter(props => {
 
   return (
     <div
-      className={`${styles.iceDesignLayoutAside} ${styles.iceDesignProAside}`}
     >
       <Nav
-        style={{ width: "200px" }}
+      activeDirection={"left"}
+        // style={{ width: "200px" }}
         openMode={"single"}
         triggerType={"click"}
-        activeDirection={null}
         openKeys={openKeys}
         selectedKeys={selectedKeys}
         defaultSelectedKeys={selectedKeys}

@@ -2,8 +2,8 @@
  * @Description: 公共方法
  * @Author: xuqiuting
  * @Date: 2019-11-13 10:33:17
- * @LastEditors  : xuqiuting
- * @LastEditTime : 2020-01-17 16:59:41
+ * @LastEditors: xuqiuting
+ * @LastEditTime: 2019-11-26 19:11:25
  */
 // 获取元素距离可视区域顶部、左部的距离
 export const getOffset = ele => {
@@ -66,27 +66,3 @@ export const guid = () => {
   };
   return s4() + s4();
 };
-
-/**
- * @name: 字符串只能是数字、字母和中文组成，不能包含特殊符号和空格。
- * @test: test font
- * @msg: 
- * @param {type} 
- * @return: 
- */
-export const stripscript = (str) => {
-  var pattern = new RegExp(/^[\u4e00-\u9fa5_a-zA-Z0-9\/]+$/)
-  return pattern.test(str)
-}
-
-/**
- * @name: 字符串只能是数字、字母和中文组成可以为空。
- * @test: test font
- * @msg: 
- * @param {type} 
- * @return: 
- */
-export const strTest = (str) => {
-  var pattern = new RegExp(/(^$)|(^[\u4E00-\u9FA5a-zA-Z0-9]+$)/)
-  return pattern.test(str)
-}

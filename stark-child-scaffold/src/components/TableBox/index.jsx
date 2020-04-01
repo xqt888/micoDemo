@@ -54,7 +54,6 @@ class TableBox extends React.Component {
     const {
       dataSource,
       columns,
-      total,
       pageNum,
       pages,
       fixedHeader,
@@ -65,6 +64,8 @@ class TableBox extends React.Component {
       propsOffsetHeight,
       ...rest
     } = this.props;
+
+    const total = Number(this.props.total);
     
     const { height, width } = this.state;
     let tableHeight = pagination ? height - 62 :height-20;

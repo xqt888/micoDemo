@@ -7,12 +7,8 @@
 
 ## 目录结构
 
-- react-router @5.x 默认采用 browerHistory 的单页应用
-- 入口文件: `src/index.js`
-- 导航配置: `src/config/menu.js`
-- 路由配置: `src/config/routes.js`
-- 数据源配置: `src/config/dataSource.js`
-- 路由入口: `src/router.jsx`
+- 应用配置: `src/app.js`
+- 路由配置: `src/routes.js`
 - 布局文件: `src/layouts`
 - 通用组件: `src/components`
 - 页面文件: `src/pages`

@@ -1,41 +1,32 @@
 {
   "name": "@icedesign/stark-layout-scaffold",
-  "version": "3.0.4",
-  "description": "微前端方案 icestark 的框架应用，用于快速初始化框架应用",
+  "version": "3.0.11",
+  "description": "微前端方案 icestark 的框架应用模板，用于快速初始化框架应用",
   "dependencies": {
     "@alifd/next": "^1.x",
-    "@alifd/theme-design-pro": "^0.5.3",
-    "@ice/stark": "^1.2.0",
+    "@alifd/theme-design-pro": "^0.x",
     "@icedesign/container": "^1.x",
-    "@icedesign/theme": "^1.x",
-    "@types/react": "^16.9.23",
+    "@types/react": "^16.9.20",
     "@types/react-dom": "^16.9.5",
-    "@types/react-redux": "^7.1.7",
-    "axios": "^0.17.1",
     "classnames": "^2.2.5",
-    "enquire-js": "^0.1.2",
-    "i": "^0.3.6",
     "mockjs": "^1.1.0",
     "moment": "^2.24.0",
-    "npm": "^6.14.1",
     "prop-types": "^15.5.8",
     "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "react-router-dom": "^5.1.2",
-    "save": "^2.4.0",
-    "url-parse": "^1.4.7"
+    "react-dom": "^16.8.0"
   },
   "devDependencies": {
-    "@ice/spec": "^0.1.1",
+    "@ice/spec": "^1.0.1",
+    "build-plugin-fusion": "^0.1.0",
+    "build-plugin-icestark": "^1.0.2",
+    "build-plugin-moment-locales": "^0.1.0",
     "eslint": "^6.0.1",
-    "stylelint": "^10.1.0",
-    "ice-plugin-fusion": "^0.1.4",
-    "ice-plugin-moment-locales": "^0.1.0",
-    "ice-scripts": "^2.0.0"
+    "ice.js": "^1.0.0",
+    "stylelint": "^13.1.0"
   },
   "scripts": {
-    "start": "ice-scripts dev -p 4446",
-    "build": "ice-scripts build",
+    "start": "icejs start",
+    "build": "icejs build",
     "lint": "npm run eslint && npm run stylelint",
     "eslint": "eslint --cache --ext .js,.jsx ./",
     "stylelint": "stylelint ./**/*.scss"
@@ -45,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ice-lab/react-materials/tree/master/scaffolds/ice-stark-layout"
+    "url": "https://github.com/alibaba-fusion/materials/tree/master/scaffolds/ice-stark-layout"
   },
   "iceworks": {
     "type": "react",
@@ -53,5 +44,7 @@
   },
   "ideMode": {
     "name": "ice-react"
-  }
+  },
+  "private": true,
+  "originTemplate": "@icedesign/stark-layout-scaffold"
 }

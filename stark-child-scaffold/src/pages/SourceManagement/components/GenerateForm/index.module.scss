@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  :global {
+    .next-form-item .next-form-item-label {
+      width: 120px;
+    }
+    .next-form-item .next-input {
+      width: 350px;
+    }
+  }
+}

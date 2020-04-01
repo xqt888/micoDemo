@@ -7,7 +7,7 @@ const urlQuery = urlParse(location.href, true).query || {};
 // if (urlQuery.env === "local") {
 //   axios.defaults.baseURL=`//127.0.0.1:${urlQuery.port}`;
 // }
-// axios.defaults.baseURL='http://10.195.244.149:4444'
+axios.defaults.baseURL=window.location.protocol + "//" + window.location.host
 axios.defaults.withCredentials = true; // 跨域设置
 axios.defaults.headers.get["X-Requested-With"] = "XMLHttpRequest"; // Ajax get请求标识
 axios.defaults.headers.post["X-Requested-With"] = "XMLHttpRequest"; // Ajax post请求标识

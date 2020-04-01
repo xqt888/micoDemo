@@ -1,11 +1,9 @@
 import { useReducer } from "react";
 import axios from "axios";
 import { Message } from "@alifd/next";
-import urlParse from "url-parse";
-const urlQuery = urlParse(location.href, true).query || {};
+
 // Set baseURL when debugging production url in dev mode
-// axios.defaults.baseURL = '//xxxx.taobao.com';
-// axios.defaults.baseURL='http://10.195.244.149:4446'
+axios.defaults.baseURL = window.location.protocol + "//" + window.location.host;
 axios.defaults.withCredentials = true; // 跨域设置
 axios.defaults.headers.get["X-Requested-With"] = "XMLHttpRequest"; // Ajax get请求标识
 axios.defaults.headers.post["X-Requested-With"] = "XMLHttpRequest"; // Ajax post请求标识
@@ -21,24 +19,12 @@ axios.interceptors.response.use(
     return response;
   },
   function(error) {
+    console.log("#######",error)
     if (error.response != null) {
       if (error.response.status == 302) {
         Message.error(error.response.statusText);
       }else if( error.response.status == 401 ){
-        Message.error("登录已经过期");
-        let query="";
-        if (urlQuery.port) {
-          query=`?port=${urlQuery.port}`
-        }
-        let casHref = sessionStorage.getItem("casHref");
-        if(casHref){
-          setTimeout(()=>{
-            let href = window.location.protocol + "//" + window.location.host;
-            sessionStorage.removeItem("token");
-            sessionStorage.removeItem("casHref");
-            window.location.href = `${casHref}/cas/logout?service=${encodeURIComponent(href+query)}`;
-          },300);
-        }
+       
       } else if (
         error.response.status == 400 ||
         error.response.status == 404 ||
@@ -60,19 +46,13 @@ axios.interceptors.response.use(
 axios.interceptors.request.use(function(config) {
   const user = JSON.parse(window.sessionStorage.getItem("userLogin")) || {};
   const token = window.sessionStorage.getItem("token");
-  // console.log(config,token,"token")
-  if (!token) {
-    // let href = window.location.protocol + "//" + window.location.host;
-    // window.location.href = `http://10.194.186.226:8081/cas/login?service=${href}`;
-  }
   config.headers["X-Access-Token"] = token;
-// debugger;
+
   //   config.headers.get["loginUserId"] = user.userId || "admin";
   //   config.headers.post["loginUserId"] = user.userId || "admin";
   //   config.headers.get["loginUserOrgId"] = user.orgId || "1";
   //   config.headers.post["loginUserOrgId"] = user.orgId || "1";
   // }
-  // console.log(config,token,"token")
   return config;
 });
 
@@ -205,10 +185,22 @@ function handleResponse(response) {
     const errormsg = new Error("后端接口异常");
     return { errormsg };
   } else {
-    const { data } = response;
+    let { data } = response;
+    // console.log(data,typeof(data),"data")
+    // if(typeof(data)=='string'){
+    //   console.log(typeof(data),"%%%")
+    //   try {
+    //     data = JSON.parse(data);
+    //     console.log(data,"%%%")
+    //   } catch (error) {
+    //     console.log(error,data,"error")
+    //     data={};
+    //   }
+    // }
+    // console.log(data,"data111")
     // Please modify the status key according to your business logic
     // normally the key is `status` or `code`
-    if (data && data.code === 200) {
+    if (data && data.code == 200) {
       return { data };
     } else if (data && data.code) {
       Message.error(data.msg);

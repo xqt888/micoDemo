@@ -3,18 +3,16 @@
  * @Author: xuqiuting
  * @Date: 2019-09-11 10:19:45
  * @LastEditors: xuqiuting
- * @LastEditTime: 2020-03-23 14:30:45
+ * @LastEditTime: 2020-04-01 18:55:46
  */
 // 使用Mock
 import Mock from 'mockjs';
-import Config from './data/config'
 import globalApi from './data/global';
-import Original from "./data/Original";
+import DataManagement from './data/DataManagement';
 
 export default {
   init(){
-    Config.init();
     globalApi.init();
-    // Original.init();
+    // DataManagement.init();
   },
 };

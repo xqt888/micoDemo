@@ -1,44 +1,44 @@
-.iceDesignProAside {
-  &.iceDesignLayoutAside {
-    overflow: hidden;
-    :global {
-      .next-nav,
-      .next-nav-sub-nav-item {
-        background: transparent;
-      }
-      .next-nav.next-normal {
-        border: none;
-      }
-      .next-nav .next-nav-item.next-menu-item {
-        color: white;
-        background: transparent;
-      }
-      .next-nav .next-menu-item-text i {
-        margin-right: 8px;
-        font-weight: 500;
-      }
-      .next-nav.next-normal .next-nav-item.next-menu-item.next-selected {
-        background: #444;
-        color: #3080fe;
-      }
-      .next-nav.next-ver .next-menu-sub-menu .next-menu-item-inner{
-        font-size: 14px;
-      }
-      .next-nav.next-normal .next-nav-item.next-menu-item.next-focused,
-      .next-nav.next-normal .next-nav-item.next-menu-item:hover {
-        background: #444;
-      }
-      .next-nav .next-menu-sub-menu .next-menu-item {
-        transition: none;
-        &.next-selected,
-        &:hover {
-          background: #444;
-          // border-radius: $corner-2;
-        }
-      }
-    }
-  }
-}
-:global .next-overlay-wrapper .next-nav-icon-placeholder {
-  display: none;
-}
+// .iceDesignProAside {
+//   &.iceDesignLayoutAside {
+//     overflow: hidden;
+//     :global {
+//       .next-nav,
+//       .next-nav-sub-nav-item {
+//         background: transparent;
+//       }
+//       .next-nav.next-normal {
+//         border: none;
+//       }
+//       .next-nav .next-nav-item.next-menu-item {
+//         color: white;
+//         background: transparent;
+//       }
+//       .next-nav .next-menu-item-text i {
+//         margin-right: 8px;
+//         font-weight: 500;
+//       }
+//       .next-nav.next-normal .next-nav-item.next-menu-item.next-selected {
+//         background: #444;
+//         color: #3080fe;
+//       }
+//       .next-nav.next-ver .next-menu-sub-menu .next-menu-item-inner{
+//         font-size: 14px;
+//       }
+//       .next-nav.next-normal .next-nav-item.next-menu-item.next-focused,
+//       .next-nav.next-normal .next-nav-item.next-menu-item:hover {
+//         background: #444;
+//       }
+//       .next-nav .next-menu-sub-menu .next-menu-item {
+//         transition: none;
+//         &.next-selected,
+//         &:hover {
+//           background: #444;
+//           // border-radius: $corner-2;
+//         }
+//       }
+//     }
+//   }
+// }
+// :global .next-overlay-wrapper .next-nav-icon-placeholder {
+//   display: none;
+// }

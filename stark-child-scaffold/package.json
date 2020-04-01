@@ -1,14 +1,11 @@
 {
-  "name": "bmsk-ice-pro",
-  "version": "0.1.0",
-  "description": "北明数科中台系统自定义模板，暂不支持效果预览功能。",
+  "name": "bmskIcePro",
+  "version": "3.0.14",
+  "description": "该模板提供了路由、菜单、状态、权限、Mock、前后端通信、国际化等领域的完整方案，且内置了丰富的区块，主要用于展示现有区块的分类以及区块组合的效果，使用时需要根据需求进行删除和添加",
   "dependencies": {
-    "@alifd/next": "^1.18.16",
     "@alifd/shell": "^1.0.8",
-    "@alifd/theme-11239": "^0.5.0",
+    "@alifd/theme-12357": "^0.7.0",
     "@antv/data-set": "^0.9.5",
-    "@antv/g6": "^3.3.2",
-    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@ice/stark-app": "^1.2.0",
     "@ice/store": "^0.3.0",
     "@icedesign/container": "^1.x",
@@ -21,22 +18,17 @@
     "@icedesign/label": "^1.x",
     "@icedesign/layout": "^1.x",
     "@icedesign/theme": "^1.x",
-    "@types/react": "^16.9.11",
-    "@types/react-dom": "^16.9.4",
-    "@types/react-redux": "^7.1.5",
-    "antd": "^3.26.0",
-    "axios": "^0.17.1",
-    "axios-mock-adapter": "^1.17.0",
-    "babel-runtime": "^6.26.0",
+    "axios": "^0.19.2",
     "bizcharts": "^3.2.2",
-    "classnames": "^2.2.6",
+    "classnames": "^2.2.5",
     "cookie": "^0.4.0",
+    "echarts": "^4.6.0",
+    "echarts-for-react": "^2.0.15-beta.1",
     "enquire-js": "^0.1.2",
     "history": "^4.7.2",
     "hoist-non-react-statics": "^2.5.5",
     "intl": "^1.2.5",
     "invariant": "^2.2.4",
-    "mockjs": "^1.1.0",
     "moment": "^2.24.0",
     "path-to-regexp": "^2.2.1",
     "prop-types": "^15.5.8",
@@ -44,29 +36,32 @@
     "react": "^16.2.0",
     "react-crons": "^1.7.2",
     "react-custom-scrollbars": "^4.2.1",
-    "react-dnd": "^10.0.2",
-    "react-dnd-html5-backend": "^10.0.2",
     "react-dom": "^16.4.1",
     "react-redux": "^7.1.3",
-    "react-router-dom": "^5.0.1",
-    "ts-import-plugin": "^1.6.1"
+    "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
-    "@ice/screenshot": "^0.1.5",
     "@ice/spec": "^0.1.1",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-redux": "^7.1.5",
+    "axios-mock-adapter": "^1.17.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-runtime": "^6.26.0",
     "css-modules-typescript-loader": "^4.0.0",
     "eslint": "^6.0.1",
+    "ice-plugin-css-assets-local": "^0.1.2",
     "ice-plugin-fusion": "^0.1.4",
     "ice-plugin-moment-locales": "^0.1.0",
-    "ice-scripts": "^2.1.12",
-    "stylelint": "^10.1.0"
+    "ice-scripts": "^2.1.14",
+    "mockjs": "^1.1.0",
+    "stylelint": "^10.1.0",
+    "ts-import-plugin": "^1.6.1"
   },
   "scripts": {
+    "format": "prettier --write",
     "start": "ice-scripts dev",
     "build": "ice-scripts build",
-    "screenshot": "screenshot -l",
-    "prepublishOnly": "npm run build && npm run screenshot",
     "lint": "npm run eslint && npm run stylelint",
     "eslint": "eslint --cache --ext .js,.jsx ./",
     "stylelint": "stylelint ./**/*.scss"
@@ -78,29 +73,23 @@
     "type": "react",
     "adapter": "adapter-react-v3"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ice-lab/react-materials/tree/master/scaffolds/ice-pro"
+  },
   "publishConfig": {
     "registry": "http://10.194.186.225:18081/repository/npm-hosted/"
   },
+  "materialConfig": {
+    "type": "react",
+    "registry": "http://10.194.186.225:18081/repository/npm-hosted/",
+    "unpkgHost": "http://10.194.186.226:3001"
+  },
   "files": [
-    "ci-cd/",
-    "mock/",
-    "src/",
-    "build/",
-    "public/",
-    "abc.json",
-    "debug.log",
-    "tsconfig.json",
-    "ice.config.js",
-    "screenshot.png",
-    "jsconfig.json"
+    "build"
   ],
   "buildConfig": {
     "theme": "@alifd/theme-11239",
     "entry": "./src/index.ts"
-  },
-  "scaffoldConfig": {
-    "name": "bmsk-ice-pro",
-    "title": "北明数科中台系统自定义模板",
-    "category": "数据中台"
   }
 }

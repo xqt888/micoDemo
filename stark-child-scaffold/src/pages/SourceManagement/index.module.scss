@@ -1,0 +1,19 @@
+.ml10 {
+  margin-left: 10px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.operation {
+  margin: 10px 0 20px;
+}
+
+.chooseSouceTypeDia {
+  :global {
+    .next-dialog-footer {
+      display: none;
+    }
+  }
+}
