@@ -47,7 +47,7 @@ axios.interceptors.request.use(function(config) {
   const user = JSON.parse(window.sessionStorage.getItem("userLogin")) || {};
   const token = window.sessionStorage.getItem("token");
   config.headers["X-Access-Token"] = token;
-
+   debugger;
   //   config.headers.get["loginUserId"] = user.userId || "admin";
   //   config.headers.post["loginUserId"] = user.userId || "admin";
   //   config.headers.get["loginUserOrgId"] = user.orgId || "1";
