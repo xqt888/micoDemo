@@ -21,7 +21,7 @@
     "build-plugin-icestark": "^1.0.2",
     "build-plugin-moment-locales": "^0.1.0",
     "eslint": "^6.0.1",
-    "ice.js": "^1.0.0",
+    "ice.js": "^1.18.6",
     "stylelint": "^13.1.0"
   },
   "scripts": {
